@@ -10,19 +10,10 @@ import java.util.Scanner;
 
 /**
  *
- * @author fabian
+ * @author Fabian Gurtner (fabian@profiluefter.me)
  */
 public class CLIReader {
     private static final Scanner SCANNER = new Scanner(System.in);
-    
-    public static void main(String[] args) {
-        CLIReader.readLine("Brigitte");
-        int i = read(Integer.class);
-        CLIReader.readLine("Brigitte");
-        CLIReader.readLine("Brigitte");
-        CLIReader.readLine("Brigitte");
-        CLIReader.readLine("Brigitte");
-    }
     
     static {
         SCANNER.useDelimiter("\n");

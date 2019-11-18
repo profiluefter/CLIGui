@@ -6,20 +6,17 @@
 package me.profiluefter.cligui;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
- * @author fabian
+ * @author Fabian Gurtner (fabian@profiluefter.me)
  */
 public class CLIGui {
-    private List<MenuItem> menuItems = new ArrayList<>();
-    private Settings settings = new Settings();
+    private final List<MenuItem> menuItems = new ArrayList<>();
+    private final Settings settings = new Settings();
 
     private final String programName;
-    private boolean running = true;
 
     public CLIGui(String programName) {
         this.programName = programName;
@@ -80,11 +77,10 @@ public class CLIGui {
             }
             
             menuItems.get(selection - 1).handler.handle();
-        } while (running);
+        } while (true);
     }
 
     private static class MenuItem {
-
         private final String name;
         private final MenuItemHandler handler;
 
@@ -99,7 +95,6 @@ public class CLIGui {
     }
 
     public static class Settings {
-
         public boolean printBanner = true;
         public boolean printBannerOnlyOnce = true;
 
