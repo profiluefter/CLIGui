@@ -75,4 +75,9 @@ public class CLIReader {
                 throw new IllegalArgumentException("Unknown type: "+clazz.getName());
         }
     }
+    
+    public static <T> T read(Class<T> clazz, String prompt) {
+        System.out.format("%s: ", prompt);
+        return read(clazz);
+    }
 }
