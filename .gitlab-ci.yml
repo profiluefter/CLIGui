@@ -15,7 +15,7 @@ build:
     - mvn $MAVEN_CLI_OPTS compile
     
 package:
-  stage: package
+  stage: deploy
   script:
     - mvn $MAVEN_CLI_OPTS package
   artifacts:
