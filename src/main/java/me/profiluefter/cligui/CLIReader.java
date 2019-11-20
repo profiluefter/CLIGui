@@ -71,6 +71,8 @@ public class CLIReader {
                 return (T)Short.valueOf(SCANNER.nextLine());
             case "java.lang.Double":
                 return (T)Double.valueOf(SCANNER.nextLine());
+            case "java.lang.String":
+                return (T)readLine();
             default:
                 throw new IllegalArgumentException("Unknown type: "+clazz.getName());
         }
