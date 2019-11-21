@@ -15,8 +15,11 @@ public class AnnotationExample {
         CLI.launch(AnnotationExample.class);
     }
 
-    @CLIOption("Persönliche Daten ausgeben")
-    public static void exampleOne(@CLInject("Dein Vorname") String firstName, @CLInject("Dein Nachname") String lastName, @CLInject("Alter") int age) {
+    @CLIOption(value="Persönliche Daten ausgeben", successMessage="Erfolgreich ausgeführt!")
+    public static void exampleOne(
+            @CLInject("Dein Vorname") String firstName, 
+            @CLInject("Dein Nachname") String lastName, 
+            @CLInject("Alter") int age) {
         System.out.format("Hallo %s %s, du bist %d Jahre alt!\n", firstName, lastName, age);
     }
 }

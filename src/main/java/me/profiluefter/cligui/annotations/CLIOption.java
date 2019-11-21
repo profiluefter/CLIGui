@@ -20,4 +20,6 @@ public @interface CLIOption {
      * @return The name of the option displayed in the menu.
      */
     public String value();
+    
+    public String successMessage() default "";
 }

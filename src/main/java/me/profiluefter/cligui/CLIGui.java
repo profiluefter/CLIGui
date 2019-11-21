@@ -13,6 +13,7 @@ import java.util.List;
  * @author Fabian Gurtner (fabian@profiluefter.me)
  */
 public class CLIGui {
+
     private final List<MenuItem> menuItems = new ArrayList<>();
     private final Settings settings = new Settings();
 
@@ -34,6 +35,7 @@ public class CLIGui {
             settings.printedBanner = true;
         }
 
+        sb.append('\n');
         for (int i = 0; i < menuItems.size(); i++) {
             sb.append(i + 1).append(") ").append(menuItems.get(i).name).append('\n');
         }
@@ -67,20 +69,21 @@ public class CLIGui {
             System.out.print(generateMenu());
             int selection = CLIReader.read(Integer.class);
 
-            if(selection < 1 || selection > menuItems.size()+1) {
+            if (selection < 1 || selection > menuItems.size() + 1) {
                 System.err.println("Ungültige Eingabe!");
                 continue;
             }
-            
+
             if (selection == menuItems.size() + 1) {
                 return;
             }
-            
+
             menuItems.get(selection - 1).handler.handle();
         } while (true);
     }
 
     private static class MenuItem {
+
         private final String name;
         private final MenuItemHandler handler;
 
@@ -91,10 +94,12 @@ public class CLIGui {
     }
 
     public static interface MenuItemHandler {
+
         public void handle();
     }
 
     public static class Settings {
+
         public boolean printBanner = true;
         public boolean printBannerOnlyOnce = true;
 
