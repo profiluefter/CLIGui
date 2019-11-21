@@ -14,9 +14,9 @@ public class AnnotationExample {
     public static void main(String[] args) {
         CLI.launch(AnnotationExample.class);
     }
-    
+
     @CLIOption("Persönliche Daten ausgeben")
     public static void exampleOne(@CLInject("Dein Vorname") String firstName, @CLInject("Dein Nachname") String lastName, @CLInject("Alter") int age) {
-        System.out.format("Hallo %s %s, du bist %d Jahre alt!", firstName, lastName, age);
+        System.out.format("Hallo %s %s, du bist %d Jahre alt!\n", firstName, lastName, age);
     }
 }

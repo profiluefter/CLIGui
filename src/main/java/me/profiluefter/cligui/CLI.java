@@ -9,7 +9,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
-import java.util.AbstractMap;
+import java.util.AbstractMap.SimpleEntry;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -18,10 +18,6 @@ import java.util.stream.IntStream;
 import me.profiluefter.cligui.annotations.CLIApplication;
 import me.profiluefter.cligui.annotations.CLIOption;
 import me.profiluefter.cligui.annotations.CLInject;
-
-import java.util.AbstractMap.SimpleEntry;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -95,6 +91,9 @@ public class CLI {
                             case "double":
                                 type = Double.class;
                                 break;
+                            case "short":
+                                type = Short.class;
+                                break;
                             default:
                                 System.err.println(type.getName());
                         }
@@ -103,23 +102,26 @@ public class CLI {
 
                     if (isPrimitive) {
                         switch (type.getName()) {
-                            case "int":
-                                parameterValues[i] = ((Number)readValue).intValue();
+                            case "java.lang.Integer":
+                                parameterValues[i] = ((Number) readValue).intValue();
                                 break;
-                            case "boolean":
-                                parameterValues[i] = ((Boolean)readValue).booleanValue();
+                            case "java.lang.Boolean":
+                                parameterValues[i] = ((Boolean) readValue).booleanValue();
                                 break;
-                            case "char":
-                                parameterValues[i] = ((Character)readValue).charValue();
+                            case "java.lang.Character":
+                                parameterValues[i] = ((Character) readValue).charValue();
                                 break;
-                            case "float":
-                                parameterValues[i] = ((Number)readValue).floatValue();
+                            case "java.lang.Float":
+                                parameterValues[i] = ((Number) readValue).floatValue();
                                 break;
-                            case "long":
-                                parameterValues[i] = ((Number)readValue).longValue();
+                            case "java.lang.Long":
+                                parameterValues[i] = ((Number) readValue).longValue();
                                 break;
-                            case "double":
-                                parameterValues[i] = ((Number)readValue).doubleValue();
+                            case "java.lang.Double":
+                                parameterValues[i] = ((Number) readValue).doubleValue();
+                                break;
+                            case "java.lang.Short":
+                                parameterValues[i] = ((Number) readValue).shortValue();
                                 break;
                             default:
                                 System.err.println(type.getName());
@@ -128,11 +130,7 @@ public class CLI {
                         parameterValues[i] = (type.cast(readValue));
                     }
                 });
-                
-                Arrays.stream(parameterValues).map(Object::getClass).forEach(System.out::println);
 
-                //TODO: FIX
-                
                 try {
                     option.invoke(null, parameterValues);
                 } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
