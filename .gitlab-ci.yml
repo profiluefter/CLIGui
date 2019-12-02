@@ -18,6 +18,8 @@ package:
   stage: deploy
   script:
     - mvn $MAVEN_CLI_OPTS package
+    - mv target/CLIGui* .
   artifacts:
+    name: build
     paths:
-    - target/CLIGui-1.0-SNAPSHOT.jar
+    - ./CLIGui*.jar
