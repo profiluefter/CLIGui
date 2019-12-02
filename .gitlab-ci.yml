@@ -21,4 +21,3 @@ package:
   artifacts:
     paths:
     - target/CLIGui-1.0-SNAPSHOT.jar
-    expire_in: 1 week
